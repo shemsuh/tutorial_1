@@ -35,11 +35,18 @@ def buyLotsOfFruit(orderList):
     Returns cost of order
     """
     totalCost = 0.0
-    for t in orderList:
-        totalCost += t[1]
-        
-    return totalCost
+    for fruit, numPounds in orderList:
+        if fruit in fruitPrices:
+            # Get the price of the fruit from the fruitPrices dictionary
+            price = fruitPrices[fruit]
+            # Calculate the cost for this fruit
+            cost = price * numPounds
+            # Add the cost to the total
+            totalCost += cost
+        else:
+            print(f"Error: {fruit} is not in the fruitPrices dictionary.")
 
+    return totalCost
 
 # Main Method
 if __name__ == '__main__':
